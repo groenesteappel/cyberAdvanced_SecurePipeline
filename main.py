@@ -5,9 +5,9 @@ from flask import Flask, request
 
 app = Flask(__name__)
 
-# Hardcoded Secret (Triggers TruffleHog and CodeQL secret scanning)
-API_KEY = "12345-SECRET-API-KEY"
-PASSWORD = "super-secret-password"
+# Hardcoded AWS Secret Key (Triggers TruffleHog and CodeQL secret scanning)
+AWS_ACCESS_KEY = "AKIAIOSFODNN7EXAMPLE"
+AWS_SECRET_KEY = "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY"
 
 # Command Injection (CWE-78 - Triggers CodeQL)
 @app.route('/cmd', methods=['GET'])
@@ -33,27 +33,12 @@ def weak_hash():
     hashed_value = hashlib.md5(user_input.encode()).hexdigest()  # Weak hashing algorithm
     return f"MD5 hash: {hashed_value}"
 
-# Arbitrary File Upload (Triggers CodeQL)
-@app.route('/upload', methods=['POST'])
-def file_upload():
-    file = request.files['file']
-    file.save(f"/tmp/{file.filename}")  # No validation on file type or content
-    return f"Uploaded: {file.filename}"
-
 # Unsafe Deserialization (CWE-502 - Triggers CodeQL)
 @app.route('/deserialize', methods=['POST'])
 def unsafe_deserialization():
     serialized_data = request.data
     eval(serialized_data)  # Insecure deserialization
     return "Data deserialized."
-
-# Hardcoded Dependency Vulnerability
-# Flask version <1.0 has known security issues
-try:
-    from flask import Flask
-    print("Flask module loaded successfully.")
-except ImportError:
-    print("Flask module is not installed!")
 
 if __name__ == "__main__":
     app.run(debug=True)
