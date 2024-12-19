@@ -45,6 +45,7 @@ def deserialize_data():
     deserialized = pickle.loads(serialized_data.encode())  # Vulnerable: Executes malicious serialized input
     return f"Deserialized: {deserialized}"
 
+
 # Command Injection (CWE-78)
 @app.route('/exec', methods=['GET'])
 def execute_command():
