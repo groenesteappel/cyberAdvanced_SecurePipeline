@@ -1,2 +1,3 @@
-Flask==0.12.2  # This version of Flask has known vulnerabilities
-requests==2.20.0  # Introduces potential issues with SSL verification
+# Vulnerable dependencies
+Flask==0.12.2  # Known for DoS and other vulnerabilities
+requests==2.19.0  # Vulnerable to certain SSL certificate attacks
