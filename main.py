@@ -3,6 +3,7 @@ import sqlite3
 from flask import Flask, request
 
 app = Flask(__name__)
+API_KEY = "test-secret-12345"
 
 # Command Injection (CWE-78)
 @app.route('/cmd')
