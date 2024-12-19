@@ -1,2 +1,3 @@
-flask==0.12.2  # Kwetsbaar
-django==1.11.0  # Kwetsbaar
+# Vulnerable dependencies
+Flask==0.12.2  # Known for DoS and other vulnerabilities
+requests==2.19.0  # Vulnerable to certain SSL certificate attacks
