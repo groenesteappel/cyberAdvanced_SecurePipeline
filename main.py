@@ -1,5 +1,3 @@
-print("Hello, World!")
-
-# Kwetsbare code om SAST te triggeren
+import os
 user_input = "os.system('ls')"
-eval(user_input)
+eval(user_input)  # Onveilige code
