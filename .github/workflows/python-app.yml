@@ -1,4 +1,4 @@
-name: SAST Pipeline
+name: codeql-analysis
 
 on:
   push:
@@ -6,27 +6,25 @@ on:
   pull_request:
     branches: [ "main" ]
   schedule:
-    - cron: "0 0 * * 0"  # Wekelijkse scan op zondag
+    - cron: "0 0 * * 0"  # Wekelijkse scan
 
 permissions:
   contents: read
   security-events: write  # Nodig voor CodeQL
 
 jobs:
-  sast-analysis:
+  codeql-analysis:
+    name: Analyze code with CodeQL
     runs-on: ubuntu-latest
 
     steps:
-    # Stap 1: Haal de code op
-    - name: Checkout code
+    - name: Checkout repository
       uses: actions/checkout@v4
 
-    # Stap 2: Initialiseer CodeQL
     - name: Initialize CodeQL
       uses: github/codeql-action/init@v2
       with:
         languages: python
 
-    # Stap 3: Voer CodeQL-analyse uit
-    - name: Run CodeQL Analysis
+    - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v2
