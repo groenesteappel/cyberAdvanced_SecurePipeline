@@ -4,6 +4,10 @@ import sqlite3
 from flask import Flask, request
 
 app = Flask(__name__)
+API_KEY = "test-secret-12345"
+
+aws_access_key_id = AKIAT4GVSAXXFS5FMCHK
+aws_secret_access_key = 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
 
 # Hardcoded AWS Secret Key (Triggers TruffleHog and CodeQL secret scanning)
 AWS_ACCESS_KEY = "AKIAIOSFODNN7EXAMPLE"
