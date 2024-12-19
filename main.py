@@ -5,6 +5,9 @@ from flask import Flask, request
 app = Flask(__name__)
 API_KEY = "test-secret-12345"
 
+aws_access_key_id = AKIAT4GVSAXXFS5FMCHK
+aws_secret_access_key = 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
+
 # Command Injection (CWE-78)
 @app.route('/cmd')
 def run_command():
