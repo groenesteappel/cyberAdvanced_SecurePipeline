@@ -1,2 +1,2 @@
-flask==0.12.2  # Kwetsbaar
-django==1.11.0  # Kwetsbaar
+Flask==0.12.2  # This version of Flask has known vulnerabilities
+requests==2.20.0  # Introduces potential issues with SSL verification
