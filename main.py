@@ -1,3 +1,5 @@
 import os
-user_input = "ls"
-os.system(user_input)  # Dit is kwetsbaar voor command injection
+
+user_input = "os.system('ls')"
+eval(user_input)  # Onveilige code
+
