@@ -1,2 +1,2 @@
 flask==0.12.2  # Kwetsbaar
-django==1.11.0  # Kwetsbaar
+django==4.2.17  # Kwetsbaar
